@@ -1,0 +1,17 @@
+nav, .page-footer {
+  background: #232F3E;
+}
+
+.brand-logo {
+  width: 200px;
+  margin-left: 1em;
+}
+
+.brand-logo img {
+  vertical-align: middle;
+  width: 100%;
+}
+
+.card {
+  min-height: 300px;
+}
