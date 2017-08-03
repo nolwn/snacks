@@ -6,17 +6,17 @@ const path = require('path');
 
 const app = express()
 app.use(bodyParser.json());
+// enable static 'public' directory for serving html/css/js files to client
 app.use(express.static(path.join('public')));
 
 const snacks = require('./routes/snacks')
-const users = require('./routes/users')
 app.use(snacks)
-app.use(users)
 
 app.use((req, res) => {
   res.sendStatus(404);
 });
 
+// Handle Boom errors
 app.use((err, _req, res, _next) => {
   if (err.output && err.output.statusCode) {
     return res

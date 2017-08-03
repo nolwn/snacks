@@ -8,7 +8,7 @@ $.getJSON('/snacks')
     })
   })
   .catch((err) => {
-    console.log(err);
+    Materialize.toast('Snacks ' + err.responseText, 3000);
   })
 
 
