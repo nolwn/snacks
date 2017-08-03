@@ -13,15 +13,17 @@ $.getJSON('/snacks')
 
 
 function createSnack(snack) {
-  const col = $('<div>').addClass('col s12 m6 l4');
   const card = $('<div>').addClass('card')
-  const content = $('<div>').addClass('card-content')
+  const imgContainer = $('<div>').addClass('card-image')
+  const img = $('<img>').attr('src', snack.img)
   const title = $('<span>').addClass('card-title').text(snack.name)
+  const content = $('<div>').addClass('card-content')
   const desc = $('<p>').text(snack.description)
 
-  content.append(title)
+  imgContainer.append(img)
+  imgContainer.append(title)
+  card.append(imgContainer)
   content.append(desc)
   card.append(content)
-  col.append(card)
-  return col
+  return card
 }

@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('name').notNullable().defaultTo('');
     table.text('description').notNullable().defaultTo('');
     table.float('price');
+    table.text('img').notNullable().defaultTo('');
     table.boolean('is_perishable').notNullable().defaultTo(false);
   });
 };
