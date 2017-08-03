@@ -1,4 +1,4 @@
-![](./public/res/logo_light.png)
+![logo](./public/res/logo_dark.png)
 
 Your goal is to create a CRUD application to review and rate your favorite snacks at Galvanize! Draw on the topics you've learned from Q1 & Q2 to design and deploy an application that covers the desired user stories.
 
