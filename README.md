@@ -50,9 +50,10 @@ This repo includes some files to get you started, but it's up to you to finish t
 
 ## Routes
 
-| Request Method | Request URL        | Request Body                                                                                                        | Response Status | Response Body                                                  |
-|----------------|--------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|----------------------------------------------------------------|
+| Request Method | Request URL | Request Body | Response Status | Response Body                                                  |
+|----------------|-------------|--------------|-----------------|----------------------------------------------------------------|
 | `POST`         | `/users`           | `{ "first_name": "Linus", "last_name": "Torvalds", "email": "linus.torvalds@hotmail.com", "password": "ilovelinux" }` | `200`           | `{ id: 2, "first_name": "Linus", "last_name": "Torvalds", ... } |
+
 
 ## Setup
 
@@ -87,12 +88,12 @@ open `http://localhost:3000` in Chrome.
 
 ## Bonus
 
-- Hide review form if user not logged in
-- Hide edit/delete buttons if user not logged in
-
-
-- **Create an admin dashboard**
+1. Display snack ratings in stars
+1. User selects rating using stars
+1. Hide review form if user not logged in
+1. Hide edit/delete buttons if user not logged in
+1. **Create an admin dashboard page**
   - Add `admin` column to users table
   - Update seeds to make user with id = 1 an admin
-  - Admin can add and remove snacks from the homepage
+  - Admin can add and remove snacks through this admin page
   - Admin can delete user reviews
