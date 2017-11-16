@@ -4,9 +4,9 @@
   "description": "Snack reviewing application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "knex": "knex"
+    "dev": "nodemon server.js",
+    "knex": "knex",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "Scott Hurlow <scott.hurlow@galvanize.com>",
@@ -18,5 +18,8 @@
     "knex": "^0.13.0",
     "morgan": "^1.8.2",
     "pg": "^7.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }
