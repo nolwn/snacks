@@ -2,12 +2,14 @@
 
 Your goal is to create a CRUD application to review and rate your favorite snacks at Galvanize! Draw on the topics you've learned from Q1 & Q2 to design and deploy an application that covers the desired user stories.
 
+This repository is solely the backend of the project. You will need to build the frontend as well!
+
 ## User Stories
 
 This repo includes some files to get you started, but it's up to you to finish these user stories:
 
 - **User can view all snacks (already complete)**
-  - When the user visits the homepage (`http://localhost:3000/`) they see a list of all snacks
+  - When the user visits the homepage they see a list of all snacks
 
 
 - **User can view details of an individual snack**
@@ -81,7 +83,7 @@ This repo includes some files to get you started, but it's up to you to finish t
 
 | Request Method | Request URL | Request Body | Response Status | Response Body                                                  |
 |----------------|-------------|--------------|-----------------|----------------------------------------------------------------|
-| `POST`         | `/users`           | `{ "first_name": "Linus", "last_name": "Torvalds", "email": "linus.torvalds@hotmail.com", "password": "ilovelinux" }` | `200`           | `{ id: 2, "first_name": "Linus", "last_name": "Torvalds", ... } |
+| `POST`         | `/api/users`           | `{ "first_name": "Linus", "last_name": "Torvalds", "email": "linus.torvalds@hotmail.com", "password": "ilovelinux" }` | `200`           | `{ id: 2, "first_name": "Linus", "last_name": "Torvalds", ... } |
 
 
 ## Setup
@@ -107,10 +109,8 @@ npm run knex migrate:latest
 npm run knex seed:run
 ```
 
-Finally, start the server and check that you can access the homepage and GET `/snacks` endpoint
+Finally, start the server and check that you can GET the `/api/snacks` endpoint
 
 ```shell
 npm run dev
 ```
-
-Open `http://localhost:3000` in Chrome.
