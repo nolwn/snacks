@@ -6,6 +6,7 @@ const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(morgan("dev"));
 
 const snacks = require('./routes/snacks');
 app.use('/api', snacks);

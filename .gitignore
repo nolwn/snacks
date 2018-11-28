@@ -1,2 +1,4 @@
 node_modules
 photos.js
+.DS_Store
+package-lock.json
