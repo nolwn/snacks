@@ -2,11 +2,11 @@
   "name": "galvanize-snacks",
   "version": "1.0.0",
   "description": "Snack reviewing application",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon src/server.js",
     "knex": "knex",
-    "start": "node server.js"
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "Scott Hurlow <scott.hurlow@galvanize.com>",
