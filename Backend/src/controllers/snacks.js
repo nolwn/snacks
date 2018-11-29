@@ -9,7 +9,7 @@ function getAll(req, res, next) {
 }
 
 function getOne(req, res, next) {
-  models.getOne(req.params.id)
+  models.getOne(req.params.snackId)
   .then(data => {
     res.status(200).send(data);
   })

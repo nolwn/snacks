@@ -6,10 +6,14 @@ const authorization = require("../authorization");
 const router = express.Router({ mergeParams: true });
 
 /**
- *  OPEN ROUTES -- ANYONE
+ *  OPEN ROUTES:
+ *  ANYONE
  */
 
 router.post("/auth/login", controllers.login)
+router.get("/admin/users", controllers.getAll);
+router.get("/:id", controllers.getOne);
+router.post("/admin/create", controllers.create);
 
 /**
  * AUTHORIZATION ROUTE
@@ -18,7 +22,8 @@ router.post("/auth/login", controllers.login)
 router.use(authorization.authorize);
 
 /**
- *  AUTHORIZED ROUTES -- ANYONE WHO IS SIGNED IN
+ *  AUTHORIZED ROUTES:
+ *  ANYONE WHO IS SIGNED IN
  */
 
 router.get("/:userId/reviews", controllers.getAllReviews);
@@ -27,14 +32,12 @@ router.get("/:userId/reviews", controllers.getAllReviews);
  * PERMISSION ROUTES
  */
 
-router.use(authorization.verifyPermission);
+router.use(authorization.verifyOwnership);
 
 /**
- *  PERMITTED ROUTES -- ANYONE WHO IS SIGNED IN WITH THE CORRECT PERSMISSIONS
+ *  PERMITTED ROUTES:
+ *  ANYONE WHO IS SIGNED IN WITH THE CORRECT PERSMISSIONS
  */
 
-router.get("/admin/users", controllers.getAll);
-router.get("/:id", controllers.getOne);
-router.post("/admin/create", controllers.create);
 
 module.exports = router;

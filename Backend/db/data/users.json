@@ -1,11 +1,13 @@
 [
   {
+    "id": 1,
     "first_name": "Nolan",
     "last_name": "Hellyer",
     "email": "nolan.hellyer@gmail.com",
     "password": "$2a$10$eBLqx8UYhdwWxZXozUX.D.bHQxjvXk1NyGqMRsx.BtMQkhl3MwQF6"
   },
   {
+    "id": 2,
     "first_name": "Edward",
     "last_name": "Nolan",
     "email": "enolan425@gmail.com",

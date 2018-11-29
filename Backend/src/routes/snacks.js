@@ -3,8 +3,30 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get("/", controllers.getAll);
-router.get("/:id", controllers.getOne);
-router.post("/", controllers.create);
+const authorization = require("../authorization");
+
+/**
+ * AUTHORIZATION ROUTE
+ */
+ router.use(authorization.authorize);
+
+/**
+ *  AUTHORIZED ROUTES:
+ *  ANYONE WHO IS SIGNED IN
+ */
+ router.get("/", controllers.getAll);
+ router.get("/:snackId", controllers.getOne);
+ router.get("/:snackId/reviews")
+
+/**
+ * PERMISSION ROUTES
+ */
+
+/**
+ *  PERMITTED ROUTES:
+ *  ANYONE WHO IS SIGNED IN WITH THE CORRECT PERSMISSIONS
+ */
+ router.post("/", controllers.create);
+
 
 module.exports = router;

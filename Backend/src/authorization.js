@@ -17,8 +17,8 @@ function authorize(req, res, next) {
   });
 }
 
-function verifyPermission(req, res, next) {
+function verifyOwnership(req, res, next) {
   next();
 }
 
-module.exports = { authorize, verifyPermission };
+module.exports = { authorize, verifyOwnership };
