@@ -1,7 +1,7 @@
-const controllers = require("../controllers/snacks.js");
-const express = require('express');
+const controllers = require("../controllers/users");
+const express = require("express");
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router.get("/", controllers.getAll);
 router.get("/:id", controllers.getOne);

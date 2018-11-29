@@ -5,11 +5,14 @@ const morgan = require('morgan');
 const path = require('path');
 
 const app = express();
+const snacks = require('./routes/snacks');
+const users = require("./routes/users");
+
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-const snacks = require('./routes/snacks');
-app.use('/api', snacks);
+app.use("/api/snacks", snacks);
+app.use("/api/users", users);
 
 app.use((req, res) => {
   const status = 404;
@@ -21,7 +24,8 @@ app.use((err, _req, res, _next) => {
   console.error(err);
   const status = err.status || 500;
   const message = err.message || 'Something went wrong!';
-  res.status(status).json({ message, status });
+  const stack = err.stack;
+  res.status(status).json({ status, message, stack });
 });
 
 const port = process.env.PORT || 3000;
