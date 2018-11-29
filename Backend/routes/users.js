@@ -3,9 +3,9 @@ const express = require("express");
 
 const router = express.Router({ mergeParams: true });
 
-router.get("/", controllers.getAll);
+router.get("/admin/users", controllers.getAll);
 router.get("/:id", controllers.getOne);
-router.post("/", controllers.create);
+router.post("/admin/create", controllers.create);
 router.post("/auth/login", controllers.login)
 
 module.exports = router;
