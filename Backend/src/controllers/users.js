@@ -16,6 +16,14 @@ function getAll(req, res, next) {
   .catch(next);
 }
 
+function getAllReviews(req, res, next) {
+  models.getAll(req.params.userId)
+  .then(data => {
+    res.status(200).send(data);
+  })
+  .catch(next);
+}
+
 function getOne(req, res, next) {
   models.getOne(req.params.id)
   .then(data => {
@@ -50,4 +58,4 @@ function login(req, res, next) {
   .catch(next);
 }
 
-module.exports = { getAll, getOne, create, login };
+module.exports = { getAll, getAllReviews, getOne, create, login };

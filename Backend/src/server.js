@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 
 app.use("/api/snacks", snacks);
 app.use("/api/users", users);
-app.use("/api/reviews", reviews);
+// app.use("/api/users/reviews", reviews);
 
 app.use((req, res) => {
   const status = 404;
