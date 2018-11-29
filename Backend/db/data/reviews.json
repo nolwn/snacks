@@ -5,5 +5,19 @@
     "rating": 2,
     "snack_id": 4,
     "user_id": 2
+  },
+  {
+    "title": "Perfect texture",
+    "text": "Nevermind those whiners who say the texture is wrong. This is just perfect!",
+    "rating": 4,
+    "snack_id": 4,
+    "user_id": 1
+  },
+  {
+    "title": "Very Good",
+    "text": "Thought it would be bad, was pleasantly surprised.",
+    "rating": 5,
+    "snack_id": 8,
+    "user_id": 2
   }
 ]

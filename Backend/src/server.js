@@ -10,12 +10,14 @@ if (process.env.NODE_ENV !== "production") {
 const app = express();
 const snacks = require('./routes/snacks');
 const users = require("./routes/users");
+const reviews = require("./routes/reviews");
 
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 app.use("/api/snacks", snacks);
 app.use("/api/users", users);
+app.use("/api/reviews", reviews);
 
 app.use((req, res) => {
   const status = 404;
