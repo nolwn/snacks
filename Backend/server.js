@@ -1,8 +1,11 @@
-
 const express = require('express')
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
+
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").load();
+}
 
 const app = express();
 const snacks = require('./routes/snacks');

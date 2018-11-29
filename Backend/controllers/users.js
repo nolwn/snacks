@@ -1,4 +1,8 @@
+const jwt = require("jsonwebtoken");
+
 const models = require("../models/users");
+
+const secret = process.env.SECRET;
 
 function getAll(req, res, next) {
   models.getAll()
@@ -36,4 +40,14 @@ function create(req, res, next) {
   .catch(next);
 }
 
-module.exports = { getAll, getOne, create };
+function login(req, res, next) {
+  models.login(req.body)
+  .then(payload => {
+    const token = jwt.sign(payload, secret);
+
+    res.status(200).send({ token });
+  })
+  .catch(next);
+}
+
+module.exports = { getAll, getOne, create, login };
