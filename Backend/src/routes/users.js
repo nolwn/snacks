@@ -10,13 +10,13 @@ const router = express.Router({ mergeParams: true });
  *  ANYONE
  */
 
-router.post("/auth/login", controllers.login)
+
 router.get("/admin/users", controllers.getAll);
 router.get("/:id", controllers.getOne);
 router.post("/admin/create", controllers.create);
 
 /**
- * AUTHORIZATION ROUTE
+ *  AUTHORIZATION ROUTE
  */
 
 router.use(authorization.authorize);
@@ -29,7 +29,7 @@ router.use(authorization.authorize);
 router.get("/:userId/reviews", controllers.getAllReviews);
 
 /**
- * PERMISSION ROUTES
+ *  PERMISSION ROUTES
  */
 
 router.use(authorization.verifyOwnership);

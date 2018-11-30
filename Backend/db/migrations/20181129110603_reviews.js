@@ -6,6 +6,9 @@ exports.up = function(knex, Promise) {
     table.integer("rating");
     table.integer("snack_id");
     table.integer("user_id");
+  })
+  .then(() => {
+    return knex.schema.raw("ALTER TABLE reviews ADD UNIQUE (snack_id, user_id);");
   });
 };
 

@@ -16,7 +16,7 @@ const authorization = require("../authorization");
  */
  router.get("/", controllers.getAll);
  router.get("/:snackId", controllers.getOne);
- router.get("/:snackId/reviews")
+ router.get("/:snackId/reviews", controllers.getReviews);
 
 /**
  * PERMISSION ROUTES

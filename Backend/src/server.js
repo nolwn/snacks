@@ -11,12 +11,14 @@ const app = express();
 const snacks = require('./routes/snacks');
 const users = require("./routes/users");
 const reviews = require("./routes/reviews");
+const authorization = require("./routes/auth");
 
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 app.use("/api/snacks", snacks);
 app.use("/api/users", users);
+app.use("/auth", authorization);
 // app.use("/api/users/reviews", reviews);
 
 app.use((req, res) => {

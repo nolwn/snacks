@@ -16,6 +16,14 @@ function getOne(req, res, next) {
   .catch(next);
 }
 
+function getReviews(req, res, next) {
+  models.getReviews(req.params.snackId)
+  .then(data => {
+    res.status(200).send(data);
+  })
+  .catch(next);
+}
+
 function create(req, res, next) {
   models.create(req.body)
   .then(data => {
@@ -26,4 +34,4 @@ function create(req, res, next) {
   .catch(next);
 }
 
-module.exports = { getAll, getOne, create };
+module.exports = { getAll, getOne, create, getReviews };

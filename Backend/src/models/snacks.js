@@ -3,22 +3,29 @@ const utils = require("../utils.js");
 
 function getAll() {
   return knex('snacks')
-  .then((result) => {
-    return result
-  })
+    .then((result) => {
+      return result
+    })
 }
 
 function getOne(id) {
   return knex("snacks")
-  .where({ id: id })
-  .then(result => {
-    if (result.length === 0) {
-      throw { status: 404, message: "Snack could not be found." };
-    }
+    .where({ id: id })
+    .then(result => {
+      if (result.length === 0) {
+        throw { status: 404, message: "Snack could not be found." };
+      }
 
-    return result;
-  })
-  .then(result => result);
+      return result;
+    })
+    .then(result => result);
+}
+
+function getAllReviews(id) {
+  return knex("snacks")
+    .select("snacks.id", "title", "text", "rating")
+    .innerJoin("reviews", "reviews.snack_id", "snacks.id")
+    .where({ "snacks.id": id })
 }
 
 function create(entry) {
@@ -32,4 +39,4 @@ function create(entry) {
     .returning("*");
 }
 
-module.exports = { getAll, getOne, create };
+module.exports = { getAll, getOne, create, getAllReviews };

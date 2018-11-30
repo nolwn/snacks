@@ -17,7 +17,7 @@ function getAll(req, res, next) {
 }
 
 function getAllReviews(req, res, next) {
-  models.getAll(req.params.userId)
+  models.getAllReviews(req.params.userId)
   .then(data => {
     res.status(200).send(data);
   })
@@ -48,14 +48,4 @@ function create(req, res, next) {
   .catch(next);
 }
 
-function login(req, res, next) {
-  models.login(req.body)
-  .then(payload => {
-    const token = jwt.sign(payload, secret);
-
-    res.status(200).send({ token });
-  })
-  .catch(next);
-}
-
-module.exports = { getAll, getAllReviews, getOne, create, login };
+module.exports = { getAll, getAllReviews, getOne, create };
