@@ -28,6 +28,17 @@ function getAllReviews(id) {
     .where({ "snacks.id": id })
 }
 
+function getAverageRating(snackId) {
+  return knex("snacks")
+    .innerJoin("reviews", "reviews.snack_id", "snacks.id")
+    .where({ "snacks.id": snackId })
+    .avg("reviews.rating")
+    .then(data => {
+      data[0].avg = parseInt(data[0].avg);
+      return data;
+    })
+}
+
 function create(entry) {
   const errors = utils.verifyEntry(entry, "snacks");
 
@@ -39,4 +50,4 @@ function create(entry) {
     .returning("*");
 }
 
-module.exports = { getAll, getOne, create, getAllReviews };
+module.exports = { getAll, getOne, create, getAllReviews, getAverageRating };
