@@ -1,10 +1,22 @@
 const knex = require("../../db/knex");
 
-function getAll(id) {
-  return knex("users")
-    .select("reviews.id", "title", "text", "rating", "users.first_name", "users.last_name")
-    .join("reviews", "user_id", "users.id")
-    .where({ "reviews.user_id": id })
+function create(entry) {
+  return knex("reviews")
+    .insert(entry)
+    .returning("*")
+    .then(([ data ]) => data);
+}
+
+function update(id, entry) {
+  return knex("reviews")
+    .update({
+       title: entry.title,
+        text: entry.text,
+      rating: entry.rating,
+     user_id: entry.user_id,
+    snack_id: entry.snack_id
+    }, "*")
+    .where({ id: id })
 }
 
 module.exports = { getAll };

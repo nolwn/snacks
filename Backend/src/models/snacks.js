@@ -1,31 +1,44 @@
 const knex = require("../../db/knex");
 const utils = require("../utils.js");
 
+function getReviews(snackId) {
+  return knex("reviews")
+    .select("reviews.*", "users.first_name", "users.last_name", "users.email")
+    .where({ snack_id: snackId })
+    .innerJoin("users", "users.id", "reviews.user_id");
+}
+
 function getAll() {
-  return knex('snacks')
+  return knex("snacks")
     .then((result) => {
       return result
     })
 }
 
-function getOne(id) {
+function getSnack(id) {
   return knex("snacks")
     .where({ id: id })
-    .then(result => {
-      if (result.length === 0) {
+    .then(([ result ]) => {
+      if (!result) {
         throw { status: 404, message: "Snack could not be found." };
       }
 
       return result;
     })
-    .then(result => result);
 }
 
-function getAllReviews(id) {
-  return knex("snacks")
-    .select("snacks.id", "title", "text", "rating")
-    .innerJoin("reviews", "reviews.snack_id", "snacks.id")
-    .where({ "snacks.id": id })
+function getOne(id) {
+  return Promise.all([
+    getSnack(id),
+    getAverageRating(id),
+    getReviews(id)
+  ])
+  .then(results => {
+    const [ snack, rating, reviews ] = results;
+    snack.reviews = reviews;
+    snack.rating = rating.avg;
+    return snack;
+  });
 }
 
 function getAverageRating(snackId) {
@@ -33,8 +46,8 @@ function getAverageRating(snackId) {
     .innerJoin("reviews", "reviews.snack_id", "snacks.id")
     .where({ "snacks.id": snackId })
     .avg("reviews.rating")
-    .then(data => {
-      data[0].avg = parseInt(data[0].avg);
+    .then(([ data ]) => {
+      data.avg = parseInt(data.avg);
       return data;
     })
 }
@@ -50,4 +63,10 @@ function create(entry) {
     .returning("*");
 }
 
-module.exports = { getAll, getOne, create, getAllReviews, getAverageRating };
+module.exports = {
+  getAll,
+  getOne,
+  create,
+  getReviews,
+  getAverageRating
+};

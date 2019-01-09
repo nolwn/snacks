@@ -4,13 +4,20 @@
     "first_name": "Nolan",
     "last_name": "Hellyer",
     "email": "nolan.hellyer@gmail.com",
-    "password": "$2a$10$eBLqx8UYhdwWxZXozUX.D.bHQxjvXk1NyGqMRsx.BtMQkhl3MwQF6"
+    "password": "$2a$10$hCDXtTkq.enR8xBL8r9XzexdWloZtqhilUvQ1pzRnb2aGGP3bre16"
   },
   {
     "id": 2,
     "first_name": "Edward",
     "last_name": "Nolan",
     "email": "enolan425@gmail.com",
-    "password": "$2a$10$vnIhSKSexUCpsmsy7YQwlOdHWgz61c9JTzKItfXAIwH9gcxCIV5cq"
+    "password": "$2a$10$G6jw5vrtW5Jnr1X1bu3JZefmCgD39LJFEs99AtjZHhBMqnlt.DxG2"
+  },
+  {
+    "id": 3,
+    "first_name": "Julie",
+    "last_name": "Ruiz",
+    "email": "ruiz.perez@gmail.com",
+    "password": "$2a$10$RTq690DDJR7HY6TfjWtnVeyUX2vdt/iT8UrBRoQTkQPl4.5/eYQXK"
   }
 ]

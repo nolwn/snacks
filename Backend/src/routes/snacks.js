@@ -28,6 +28,7 @@ const authorization = require("../authorization");
  *  ANYONE WHO IS SIGNED IN WITH THE CORRECT PERSMISSIONS
  */
  router.post("/", controllers.create);
+ // router.put("/", controllers.update);
 
 
 module.exports = router;

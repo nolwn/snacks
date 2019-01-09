@@ -14,7 +14,10 @@ const reviews = require("./routes/reviews");
 const authorization = require("./routes/auth");
 
 app.use(bodyParser.json());
-app.use(morgan("dev"));
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 app.use("/api/snacks", snacks);
 app.use("/api/users", users);
@@ -28,7 +31,7 @@ app.use((req, res) => {
 });
 
 app.use((err, _req, res, _next) => {
-  console.error(err);
+  // console.error(err);
   const status = err.status || 500;
   const message = err.message || 'Something went wrong!';
   const stack = err.stack;
@@ -37,6 +40,10 @@ app.use((err, _req, res, _next) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log('listening on port', port);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(port, () => {
+    console.log('listening on port', port);
+  });
+}
+
+module.exports = app;

@@ -4,9 +4,10 @@
   "description": "Snack reviewing application",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
+    "test": "mocha",
+    "dev": "nodemon src/app.js",
     "knex": "knex",
-    "start": "node src/server.js"
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "Scott Hurlow <scott.hurlow@galvanize.com>",
@@ -22,7 +23,10 @@
     "pg": "^7.0.2"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
     "dotenv": "^6.1.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.12.1"
   }
 }
