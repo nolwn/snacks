@@ -7,7 +7,8 @@
     "test": "mocha",
     "dev": "nodemon src/app.js",
     "knex": "knex",
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "license-checker": "license-checker"
   },
   "keywords": [],
   "author": "Scott Hurlow <scott.hurlow@galvanize.com>",
@@ -26,6 +27,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
     "dotenv": "^6.1.0",
+    "license-checker": "^25.0.1",
     "mocha": "^5.2.0",
     "nodemon": "^1.12.1"
   }

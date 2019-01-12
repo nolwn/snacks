@@ -7,8 +7,6 @@ const routes = {
 function verifyEntry(entry, route) {
   const requirements = routes[route];
 
-  console.log(requirements)
-
   const errors = requirements.reduce((acc, property) => {
     if (!entry[property]) {
       acc.push(property);

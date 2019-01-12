@@ -28,10 +28,13 @@ function getOne(req, res, next) {
   models.getOne(req.params.id)
   .then(data => {
     if (data.length === 0) {
-      throw { status: 404, message: `Could not find a user with the id ${id}` };
+      throw {
+        status: 404,
+        message: `Could not find a user with the id ${req.params.id}`
+      };
     }
 
-    res.status(200).send(data);
+    res.status(200).send(data[0]);
   })
   .catch(next);
 }
@@ -43,7 +46,7 @@ function create(req, res, next) {
       throw { status: 400, message: "The entry could not be added." };
     }
 
-    res.status(201).send(data);
+    res.status(201).send(data[0]);
   })
   .catch(next);
 }

@@ -11,9 +11,9 @@ const router = express.Router({ mergeParams: true });
  */
 
 
-router.get("/admin/users", controllers.getAll);
+router.get("/", controllers.getAll);
 router.get("/:id", controllers.getOne);
-router.post("/admin/create", controllers.create);
+router.post("/create", controllers.create);
 
 /**
  *  AUTHORIZATION ROUTE
