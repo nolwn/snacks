@@ -29,7 +29,7 @@ function getOne(req, res, next) {
   .then(data => {
     if (data.length === 0) {
       throw {
-        status: 404,
+        status: 400,
         message: `Could not find a user with the id ${req.params.id}`
       };
     }

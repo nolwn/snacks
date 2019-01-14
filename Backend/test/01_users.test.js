@@ -15,20 +15,21 @@ chai.use(chaiHttp);
 describe("Users", () => {
   before("restart the database", restartDatabase);
 
-  describe("GET all users", () => {
-    before(done => {
-      chai.request(server)
-        .post('/auth/login')
-        .send({
-          email: 'nolan.hellyer@gmail.com',
-          password:'password'
-        })
-        .end((err, res) => {
-          this.token = res.body.token;
+  before(done => {
+    chai.request(server)
+    .post('/auth/login')
+    .send({
+      email: 'nolan.hellyer@gmail.com',
+      password:'password'
+    })
+    .end((err, res) => {
+      this.token = res.body.token;
 
-          done();
-        });
+      done();
     });
+  });
+  
+  describe("GET all users", () => {
 
     it("should return a status of 200", done => {
       chai.request(server)
@@ -107,14 +108,28 @@ describe("Users", () => {
     });
 
     it("should not return a password", done => {
+      const userId = 1;
       chai.request(server)
-        .get("/api/users/1")
+        .get("/api/users/" + userId)
         .end((err, res) => {
           const { body } = res;
 
           assert.isObject(body);
           assert.isNotArray(body);
           assert.notProperty(body, "password");
+
+          done();
+        });
+    });
+
+    it("should return a status of 400 if the user does not exist", done => {
+      userId = users.length + 1;
+      chai.request(server)
+        .get("/api/users/" + userId)
+        .end((err, res) => {
+          const { status } = res;
+
+          assert.equal(status, 400);
 
           done();
         });
